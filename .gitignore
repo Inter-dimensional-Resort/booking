@@ -1,6 +1,19 @@
+# node modules
 node_modules
+
+#logfiles
+*.log
+
+#bundle.js
 public/dist/bundle.js
-db/dbconfig.js
+
+#config
 coverage/clover.xml
 coverage/lcov-report/index.html
 coverage
+**/db/config.js
+node_modules
+**/db/seed/rooms.json
+rooms.json
+
+coverage/**
