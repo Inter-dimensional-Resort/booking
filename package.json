@@ -8,7 +8,9 @@
     "start": "nodemon server/index.js",
     "build": "webpack --config webpack.config.prod.js",
     "react-dev": "webpack -d --watch",
-    "seed": "mysql -u root <db/schema.sql && node db/room_generater.js && db/booking_generater.js"
+    "seed": "mysql -u root <db/schema.sql && node db/room_generater.js && db/booking_generater.js",
+    "createSeed": "node ./db/seed/nosql.seed.js",
+    "seedNo": "arangoimport --file \"./db/seed/rooms.json\" --type json --collection \"rooms\" --create-collection"
   },
   "lint-staged": {
     "*.js": [
@@ -34,6 +36,7 @@
   },
   "homepage": "https://github.com/hacker-home/Airbnb-booking#readme",
   "dependencies": {
+    "arangojs": "^6.14.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "enzyme": "^3.9.0",
@@ -46,10 +49,10 @@
     "mysql": "^2.17.1",
     "mysql2": "^1.6.5",
     "nodemon": "^1.19.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "sequelize": "^5.15.1",
-    "prop-types": "^15.7.2"
+    "sequelize": "^5.15.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
