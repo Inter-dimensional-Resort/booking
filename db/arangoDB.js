@@ -5,4 +5,3 @@ const db = new arangojs.Database();
 
 db.useDatabase('rooms');
 db.useBasicAuth('root', `${arangoKey}`);
-

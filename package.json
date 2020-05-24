@@ -9,8 +9,9 @@
     "build": "webpack --config webpack.config.prod.js",
     "react-dev": "webpack -d --watch",
     "seed": "mysql -u root <db/schema.sql && node db/room_generater.js && db/booking_generater.js",
-    "createSeed": "node ./db/seed/nosql.seed.js",
-    "seedNo": "arangoimport --file \"./db/seed/rooms.json\" --type json --collection \"rooms\" --create-collection"
+    "createSeed:json": "node ./db/seed/nosql.seed.js",
+    "createSeed:csv": "node ./db/seed/sql.seed.js",
+    "seed:arango": "arangoimport --file \"./db/seed/rooms.json\" --type json --collection \"rooms\" --create-collection"
   },
   "lint-staged": {
     "*.js": [
@@ -39,6 +40,7 @@
     "arangojs": "^6.14.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "csv-write-stream": "^2.0.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.1",
     "express": "^4.17.0",

@@ -13,7 +13,7 @@ coverage/lcov-report/index.html
 coverage
 **/db/config.js
 node_modules
-**/db/seed/rooms.json
-rooms.json
+**/db/seed/*.json
+**/db/seed/*.csv
 
 coverage/**
