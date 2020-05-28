@@ -2,10 +2,8 @@ DROP DATABASE IF EXISTS listings;
 
 CREATE DATABASE listings;
 
-USE listings;
-
 CREATE TABLE rooms (
-  id INT NOT NULL AUTO_INCREMENT,
+  id SERIAL,
   description VARCHAR(255) NOT NULL,
   price INT,
   cleaning_fee INT,
@@ -21,8 +19,8 @@ CREATE TABLE rooms (
   PRIMARY KEY (id)
 );
 
-CREATE TABLE reservations (
-  id INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE bookings (
+  id SERIAL,
   room_id INT,
   check_in DATE,
   check_out DATE,
@@ -37,5 +35,5 @@ CREATE TABLE reservations (
     REFERENCES rooms(id)
 );
 
-COPY rooms FROM './rooms.csv' DELIMITER ',' SCV HEADER;
-COPY reservations FROM './reservations.csv' DELIMITER ',' SCV HEADER;
+\COPY rooms FROM './db/seed/rooms.csv' DELIMITER ',' CSV HEADER;
+\COPY bookings FROM './db/seed/bookings.csv' DELIMITER ',' CSV HEADER;

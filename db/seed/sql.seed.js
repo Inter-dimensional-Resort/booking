@@ -33,7 +33,7 @@ class RoomStream extends Readable {
   }
 
   _read() {
-    if (this.count === 1E7) {
+    if (this.count === 1E0) {
       console.log('Rooms: writes complete');
       return;
     }
@@ -57,7 +57,7 @@ class RoomStream extends Readable {
     if (this.count === 1) {
       this.push(`${Object.keys(room).toString()}\n`);
     }
-    this.push(`${room.id},${room.description},${room.price},${room.cleaning_fee},${room.service_fee},${room.tax},${room.max_adults},${room.max_children},${room.max_infants},${room.max_night},${room.min_night},${room.num_reviews}\n`);
+    this.push(`${room.id},${room.description},${room.price},${room.cleaning_fee},${room.service_fee},${room.tax},${room.max_adults},${room.max_children},${room.max_infants},${room.max_night},${room.min_night},${room.ratings},${room.num_reviews}\n`);
     this.count += 1;
   }
 }
@@ -70,27 +70,27 @@ class BookingStream extends Readable {
   }
 
   _read() {
-    if (this.count === 1E7) {
+    if (this.count === 1E0) {
       console.log('Bookings: Writes complete');
       return;
     }
     const { checkIn, checkOut } = checkInOutGenerator();
     const booking = {
-      id: this.count.toString(),
-      check_in: checkIn,
-      check_out: checkOut,
-      createdAt: faker.date.past(),
+      id: this.count,
+      roomId: this.count,
+      check_in: checkIn.toDateString(),
+      check_out: checkOut.toDateString(),
+      createdAt: faker.date.past().toDateString(),
       email: faker.internet.email(),
       adults: randomNumberGenerator(1, 6),
       children: randomNumberGenerator(0, 4),
       infants: randomNumberGenerator(0, 2),
-      roomId: this.count.toString(),
-      updatedAt: faker.date.past(),
+      updatedAt: faker.date.past().toDateString(),
     };
     if (this.count === 1) {
       this.push(`${Object.keys(booking).toString()}\n`);
     }
-    this.push(`${booking.id},${booking.check_in},${booking.check_out},${booking.createdAt},${booking.email},${booking.adults},${booking.children},${booking.infants},${booking.roomId},${booking.updatedAt}\n`);
+    this.push(`${booking.id},${booking.roomId},${booking.check_in},${booking.check_out},${booking.createdAt},${booking.email},${booking.adults},${booking.children},${booking.infants},${booking.updatedAt}\n`);
     this.count += 1;
   }
 }

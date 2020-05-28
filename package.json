@@ -11,7 +11,8 @@
     "seed": "mysql -u root <db/schema.sql && node db/room_generater.js && db/booking_generater.js",
     "createSeed:json": "node ./db/seed/nosql.seed.js",
     "createSeed:csv": "node ./db/seed/sql.seed.js",
-    "seed:arango": "arangoimport --file \"./db/seed/rooms.json\" --type json --collection \"rooms\" --create-collection"
+    "seed:arango": "arangoimport --file \"./db/seed/rooms.json\" --type json --collection \"rooms\" --create-collection",
+    "seed:postgres": "psql listings < ./db/seed/schema.sql"
   },
   "lint-staged": {
     "*.js": [
