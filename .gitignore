@@ -15,5 +15,6 @@ coverage
 node_modules
 **/db/seed/*.json
 **/db/seed/*.csv
+**/db/db.config.js
 
 coverage/**
