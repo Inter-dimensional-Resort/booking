@@ -48,8 +48,8 @@ export default class App extends React.Component {
         error: (err) => {
           console.log(err);
         },
-        success: (result) => {
-          this.updateRoomState(result);
+        success: ({ rows }) => {
+          this.updateRoomState(rows[0]);
         },
       });
     } else {
@@ -120,12 +120,12 @@ export default class App extends React.Component {
   updateRoomState(result) {
     this.setState({
       roomInfo: {
-        roomname: result.roomname,
+        roomname: result.description,
         price: result.price,
         cleaningFee: result.cleaning_fee,
         serviceFee: result.service_fee,
         tax: result.tax,
-        maxGuest: result.max_guest,
+        maxGuest: result.max_adults + result.max_children + result.max_infants,
         minNight: result.min_night,
         maxNight: result.max_night,
         ratings: result.ratings,
