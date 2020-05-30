@@ -18,3 +18,5 @@ node_modules
 **/db/db.config.js
 
 coverage/**
+
+newrelic.js

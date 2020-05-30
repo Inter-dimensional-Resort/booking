@@ -8,13 +8,13 @@ const randomNumberGenerator = (min, max) => {
 };
 
 export const options = {
-  // thresholds: {
-  //   'failed requests': ['rate<0.1'],
-  //   http_req_duration: ['p(100)<2000'],
-  // },
-
   stages: [
-    { duration: '10s', target: 1000 },
+    { duration: '10s', target: 100 },
+    { duration: '30s', target: 500 },
+    { duration: '60s', target: 1000 },
+    { duration: '30s', target: 2000 },
+    { duration: '90s', target: 100 },
+    { duration: '60s', target: 1000 },
   ]
 };
 
